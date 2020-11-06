@@ -1,0 +1,18 @@
+
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{{ url($santyoku->image_url) }}" alt="..." class="img-rounded">
+      <div class="caption">
+        <h3><a href="{{ route('santyokus.show', $santyoku->id) }}">{{ $santyoku->title }}</a></h3>
+        <p>{{ $santyoku->description }}</p>
+        <a href="#" class="btn btn-primary" role="button">購入</a>
+        <a href="{{ route('santyokus.show', $santyoku->id) }}" class="btn btn-primary" role="button">詳細</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
