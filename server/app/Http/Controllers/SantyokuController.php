@@ -5,19 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Santyoku;
 use App\Http\Requests\SantyokuRequest;
-use App\Models\Cart;
 
 class SantyokuController extends Controller
 {
     public function index(Request $request)
     {
         $title = $request->title;
-        $category = $request->category;
 
         $query = Santyoku::query();
         if($title) {
             $query->where('title', 'like', '%' . $title . '%');
+            dd($query->all());
+            // dd($query);
         } 
+        
 
         $santyokus = $query->simplepaginate(10);
         
@@ -46,22 +47,26 @@ class SantyokuController extends Controller
         if ($file = $request->image_url) {
             $fileName = date("Ymd_His_") . $file->getClientOriginalName();
             $target_path = public_path('sorage/santyoku_image/');
-            $filename = $request->image_url->storeAs('public/santyoku_image', $fileName);
+            $filePath = $file->store('public');
+            $fileName = $request->image_url->storeAs('storage/santyoku_image', $fileName);
         } else {
             $fileName = "";
         }
-        $santyoku = new Santyoku;
+
+
+        $santyokus = new Santyoku;
         // 値の用意
-        $santyoku->title = $request->title;
-        $santyoku->description = $request->description;
-        $santyoku->price = $request->price;
-        $santyoku->image_url = $fileName;
-        $santyoku->img_path = $fileName;
-        // $santyoku->timestamps =false;
+        $santyokus->title = $request->title;
+        $santyokus->description = $request->description;
+        $santyokus->price = $request->price;
+        $santyokus->image_url = $fileName;
+        $santyokus->img_path = $fileName;
+        $santyokus->timestamps =true;
         // インスタンスに値を設定して保存
-        $santyoku->save();
+        $santyokus->save();
         // 登録したらindexに戻る
-        return redirect('/santyokus');
+        return view('santyokus.index', compact('santyokus'));
+        // return redirect()->route('santyokus', compact('santyokus'));
     }
 
     public function update(SantyokuRequest $request, $id)
@@ -87,9 +92,4 @@ class SantyokuController extends Controller
         return redirect('/santyokus');
     }
 
-    public function myCart()
-   {
-       $my_carts = Cart::all();
-       return view('mycarts',compact('my_carts'));
-   }
 }

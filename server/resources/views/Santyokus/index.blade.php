@@ -16,6 +16,8 @@
                 <div class="container">
                     <div class="row">
                 @foreach ($santyokus as $santyoku)
+                        {{-- {{var($santyokus['items'])}} --}}
+                    {{dd($santyokus)}}
                     @include('layouts.santyoku', compact('santyoku'))
                     @endforeach
                     </div>
