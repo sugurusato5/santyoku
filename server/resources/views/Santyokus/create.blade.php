@@ -25,6 +25,17 @@
                 <input type="text" name="title" value="{{ old('title') }}">
             </p>
             <p>
+                カテゴリー：<br>
+            <select name="category">
+                <option value="果物">果物</option>
+                <option value="野菜">野菜</option>
+                <option value="米・穀物">米・穀物</option>
+                <option value="魚介類">魚介類</option>
+                <option value="肉">肉</option>
+            </select>
+                {{-- <input type="text"name="category" value="{{ old('title') }}"> --}}
+            </p>
+            <p>
                 商品詳細：<br>
                 <textarea name="description" id="" cols="20" rows="2">{{ old('body')}}</textarea>
             </p>
@@ -38,7 +49,8 @@
             </p>
             <p>
                 <button type="submit" class="btn btn-secondary my-2">出品</button>
-                <a href="/santyokus">一覧に戻る</a>
+                <button type="button" class="btn btn-secondary my-2" onclick="location.href='/santyokus'">一覧に戻る</button>
+                {{-- <a href="/santyokus">一覧に戻る</a> --}}
             </p>
         </form>
     </div>

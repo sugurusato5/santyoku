@@ -18,6 +18,9 @@ class SantyokuController extends Controller
         if($title) {
             $query->where('title', 'like', '%' . $title . '%');
         } 
+        if($category) {
+            $query->where('category', 'like', '%' . $category . '%');
+        } 
 
         $santyokus = $query->simplepaginate(9);
         
@@ -55,8 +58,10 @@ class SantyokuController extends Controller
         $santyoku->title = $request->title;
         $santyoku->description = $request->description;
         $santyoku->price = $request->price;
+        $santyoku->category = $request->category;
         $santyoku->image_url = 'storage/santyoku_image/' . $fileName;
         $santyoku->img_path = $fileName;
+
         // $santyoku->timestamps =false;
         // インスタンスに値を設定して保存
         $santyoku->save();

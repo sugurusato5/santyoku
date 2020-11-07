@@ -14,7 +14,7 @@ class AddCategotyToSantyokusTable extends Migration
     public function up()
     {
         Schema::table('santyokus', function (Blueprint $table) {
-            //
+            $table->string('category');  //カラム追加
         });
     }
 
@@ -26,7 +26,7 @@ class AddCategotyToSantyokusTable extends Migration
     public function down()
     {
         Schema::table('santyokus', function (Blueprint $table) {
-            //
+            $table->dropColumn('category');  //カラムの削除
         });
     }
 }
