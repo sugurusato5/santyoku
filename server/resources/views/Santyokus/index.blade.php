@@ -18,8 +18,8 @@
                 @foreach ($santyokus as $santyoku)
                     @include('layouts.santyoku', compact('santyoku'))
                     @endforeach
-                    </div>
+                  </div>
+                  {{ $santyokus->links() }}
                 </div>
             </div>
-            
-            @endsection
+@endsection

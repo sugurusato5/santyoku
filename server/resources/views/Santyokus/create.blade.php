@@ -33,7 +33,7 @@
                 <input type="number" name="price" value="{{ old('price') }}">
             </p>
             <p>
-                商品画像URL：<br>
+                商品画像：<br>
                 <input type="file" name="image_url" value="{{ old('image_url') }}">
             </p>
             <p>

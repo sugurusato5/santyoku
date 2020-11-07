@@ -19,7 +19,7 @@ class SantyokuController extends Controller
             $query->where('title', 'like', '%' . $title . '%');
         } 
 
-        $santyokus = $query->simplepaginate(10);
+        $santyokus = $query->simplepaginate(9);
         
         return view('santyokus.index', compact('santyokus'));
     }
@@ -45,7 +45,7 @@ class SantyokuController extends Controller
     {
         if ($file = $request->image_url) {
             $fileName = date("Ymd_His_") . $file->getClientOriginalName();
-            $target_path = public_path('sorage/santyoku_image/');
+            $target_path = public_path('storage/santyoku_image/');
             $filename = $request->image_url->storeAs('public/santyoku_image', $fileName);
         } else {
             $fileName = "";
@@ -55,7 +55,7 @@ class SantyokuController extends Controller
         $santyoku->title = $request->title;
         $santyoku->description = $request->description;
         $santyoku->price = $request->price;
-        $santyoku->image_url = $fileName;
+        $santyoku->image_url = 'storage/santyoku_image/' . $fileName;
         $santyoku->img_path = $fileName;
         // $santyoku->timestamps =false;
         // インスタンスに値を設定して保存
@@ -82,9 +82,9 @@ class SantyokuController extends Controller
 
     public function destroy($id)
     {
-        $santyoku = Santyoku::find($id);
-        $santyoku->delete();
-        return redirect('/santyokus');
+        // $santyoku = Santyoku::find($id);
+        // $santyoku->delete();
+        // return redirect('/santyokus');
     }
 
     public function myCart()

@@ -15,9 +15,11 @@
         </ul>
     </div>
 @endif
-<h1>商品更新フォーム</h1>
 <!--更新先はitemsのidにしないと増える php artisan rote:listで確認①-->
-<form action="/santyokus/{{ $santyoku->id }}" method="post">
+<div class="container">
+<h1>商品更新フォーム</h1>
+{{-- <form action="/santyokus/{{ $santyoku->id }}" method="post"> --}}
+<form action="/santyokus/{{ $santyoku->id }}" method="post" enctype="multipart/form-data">
     @csrf
     <!-- resourceの場合PUTを指定してあげないとエラーが起きる php artisan rote:listで確認② -->
     @method('PUT')
@@ -36,9 +38,18 @@
         <input type="number" name="price" value="{{ $santyoku->price }}">
     </p>
     <p>
-        商品画像URL：<br>
-        <input type="text" name="image_url" value="{{ $santyoku->image_url }}">
+        商品画像：<br>
+        {{-- <input type="text" name="image_url" value="{{ $santyoku->image_url }}"> --}}
+        <input type="file" name="image_url" value="{{ old('image_url') }}">
     </p>
-    <input type="submit" value="更新">
-    <a href="/santyokus">一覧に戻る</a>
+    <input type="submit" value="更新" class="btn btn-secondary my-2">
+    <a href="/santyokus" class="btn btn-secondary my-2">一覧に戻る</a>
 </form>
+    <form action="/santyokus/{{ $santyoku->id }}" method="post">
+        @csrf
+        @method('DELETE')
+        {{-- <input type="submit" value="削除する" onclick="if(!confirm('削除しますか？')){return false};"> --}}
+        <button type="submit" class="btn btn-secondary my-2" onclick="if(!confirm('削除しますか？')){return false};">削除する</button>
+    </form>
+</div>
+@endsection
