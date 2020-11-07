@@ -18,7 +18,6 @@ Route::get('/', function () {
 });
 
 Route::resource('santyokus', 'SantyokuController');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

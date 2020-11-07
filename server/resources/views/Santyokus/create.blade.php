@@ -32,17 +32,12 @@
                 価格：<br>
                 <input type="number" name="price" value="{{ old('price') }}">
             </p>
-            
             <p>
                 商品画像URL：<br>
                 <input type="file" name="image_url" value="{{ old('image_url') }}">
             </p>
             <p>
-                顔写真URL:<br>
-                <input type="file" name="img_path" value="{{ old('img_path') }}">
-            </p>
-            <p>
-                <button type="button" class="btn btn-secondary my-2">出品</button>
+                <button type="submit" class="btn btn-secondary my-2">出品</button>
                 <a href="/santyokus">一覧に戻る</a>
             </p>
         </form>

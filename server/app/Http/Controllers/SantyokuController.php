@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Santyoku;
 use App\Http\Requests\SantyokuRequest;
+use App\Models\Cart;
 
 class SantyokuController extends Controller
 {
@@ -17,9 +18,7 @@ class SantyokuController extends Controller
         if($title) {
             $query->where('title', 'like', '%' . $title . '%');
         } 
-        if($category) {
-            $query->where('category', 'like', '%' . $category . '%');
-        }
+
         $santyokus = $query->simplepaginate(10);
         
         return view('santyokus.index', compact('santyokus'));
@@ -44,10 +43,10 @@ class SantyokuController extends Controller
 
     public function store(SantyokuRequest $request)
     {
-        if ($file = $request->profile_img) {
-            $fileName = time() . $file->getClientOriginalName();
-            $target_path = public_path('santyoku_image/');
-            $file->move($target_path, $fileName);
+        if ($file = $request->image_url) {
+            $fileName = date("Ymd_His_") . $file->getClientOriginalName();
+            $target_path = public_path('sorage/santyoku_image/');
+            $filename = $request->image_url->storeAs('public/santyoku_image', $fileName);
         } else {
             $fileName = "";
         }
@@ -58,7 +57,7 @@ class SantyokuController extends Controller
         $santyoku->price = $request->price;
         $santyoku->image_url = $fileName;
         $santyoku->img_path = $fileName;
-        $santyoku->timestamps =false;
+        // $santyoku->timestamps =false;
         // インスタンスに値を設定して保存
         $santyoku->save();
         // 登録したらindexに戻る
@@ -87,4 +86,10 @@ class SantyokuController extends Controller
         $santyoku->delete();
         return redirect('/santyokus');
     }
+
+    public function myCart()
+   {
+       $my_carts = Cart::all();
+       return view('mycarts',compact('my_carts'));
+   }
 }
