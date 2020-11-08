@@ -18,9 +18,10 @@ Route::get('/', function () {
 });
 
 Route::resource('santyokus', 'SantyokuController');
+Route::resource('carts', 'CartController', ['only' => ['show', 'destroy']])->middleware('auth');
+// Route::get('/carts','SantyokuController@carts');
 Auth::routes();
 
-Route::get('store', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();

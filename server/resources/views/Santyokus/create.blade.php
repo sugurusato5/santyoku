@@ -33,7 +33,7 @@
                 <option value="魚介類">魚介類</option>
                 <option value="肉">肉</option>
             </select>
-                {{-- <input type="text"name="category" value="{{ old('title') }}"> --}}
+                {{-- {{-- <input type="text"name="category" value="{{ old('title') }}"> --}}
             </p>
             <p>
                 商品詳細：<br>
@@ -50,8 +50,43 @@
             <p>
                 <button type="submit" class="btn btn-secondary my-2">出品</button>
                 <button type="button" class="btn btn-secondary my-2" onclick="location.href='/santyokus'">一覧に戻る</button>
-                {{-- <a href="/santyokus">一覧に戻る</a> --}}
+                <a href="/santyokus">一覧に戻る</a>
             </p>
         </form>
+
+    {{-- <div class="container">
+        <form action="/santyokus" method="post" enctype="multipart/form-data">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="form-group">
+                    <label for="name"><span class="label label-danger"></span> 商品名</label>
+                    <input t="text" name="title" value="{{ old('title') }}" class="form-control" placeholder="" autofocus required>
+                </div>
+                <div class="form-group">
+                    <label for="email"><span class="label label-danger"></span>商品詳細</label>
+                    <textarea name="description" id=""class="form-control" cols="20" rows="2">{{ old('body')}}</textarea>
+                    {{-- <input type="email" id="email" name="email" class="form-control" placeholder="例：raffaello@jungleocean.com" required> --}}
+                {{-- </div>
+                <div class="form-group">
+            <select name="category">
+                <option value="果物">果物</option>
+                <option value="野菜">野菜</option>
+                <option value="米・穀物">米・穀物</option>
+                <option value="魚介類">魚介類</option>
+                <option value="肉">肉</option>
+            </select>
+                </div>
+               商品画像：<br>
+                <input type="file" name="image_url" value="{{ old('image_url') }}">
+            </p>
+            <p>
+                <button type="submit" class="btn btn-secondary my-2">出品</button>
+                <button type="button" class="btn btn-secondary my-2" onclick="location.href='/santyokus'">一覧に戻る</button>
+                <a href="/santyokus">一覧に戻る</a>
+            </p>
+        </form> 
     </div>
-@endsection
+
+    <hr>
+
+    </div> --}}
+@endsection 

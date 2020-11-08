@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Santyoku;
 use App\Http\Requests\SantyokuRequest;
-use App\Models\Cart;
+
 
 class SantyokuController extends Controller
 {
@@ -13,18 +13,24 @@ class SantyokuController extends Controller
     {
         $title = $request->title;
         $category = $request->category;
+        $santyokus_all= Santyoku::orderBy('created_at','desc')->get();
 
         $query = Santyoku::query();
         if($title) {
             $query->where('title', 'like', '%' . $title . '%');
+            $santyokus = $query->simplepaginate(3);
         } 
         if($category) {
             $query->where('category', 'like', '%' . $category . '%');
+            $santyokus = $query->simplepaginate(3);
         } 
+        if($title || $category !== false) {
+            $query->orderByRaw('created_at desc')->get();
+            $santyokus = $query->simplepaginate(3);
+        }
 
-        $santyokus = $query->simplepaginate(9);
         
-        return view('santyokus.index', compact('santyokus'));
+        return view('santyokus.index', ['santyokus' => $santyokus]);
     }
 
     public function show($id)
@@ -71,13 +77,20 @@ class SantyokuController extends Controller
 
     public function update(SantyokuRequest $request, $id)
     {
+                if ($file = $request->image_url) {
+            $fileName = date("Ymd_His_") . $file->getClientOriginalName();
+            $target_path = public_path('storage/santyoku_image/');
+            $filename = $request->image_url->storeAs('public/santyoku_image', $fileName);
+        } else {
+            $fileName = "";
+        }
         $santyoku = Santyoku::find($id);
         // 値の用意
         $santyoku->title = $request->title;
         $santyoku->description = $request->description;
         $santyoku->price = $request->price;
-        $santyoku->image_url = $request->image_url;
-        $santyoku->img_path = $request->img_path;
+        $santyoku->image_url = 'storage/santyoku_image/' . $fileName;
+        $santyoku->img_path = $fileName;
         $santyoku->timestamps =false;
         // インスタンスに値を設定して保存
         $santyoku->save();
@@ -87,14 +100,16 @@ class SantyokuController extends Controller
 
     public function destroy($id)
     {
-        // $santyoku = Santyoku::find($id);
-        // $santyoku->delete();
-        // return redirect('/santyokus');
+        $santyoku = Santyoku::find($id);
+        $santyoku->delete();
+        return redirect('/santyokus');
     }
 
     public function myCart()
-   {
-       $my_carts = Cart::all();
-       return view('mycarts',compact('my_carts'));
-   }
+    {
+        $my_carts = Cart::all();
+        return view('mycarts',compact('my_carts'));
+        
+    }
+
 }
