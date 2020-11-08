@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="container">
+<div class="container" align="center">
 
     <div><h1>Thank you for your order</h1></div>
     <div><h2></h2> </div>
@@ -14,12 +14,12 @@
     <p>
         <b>商品名：{{ $santyoku->title }}</b>
     </p>
-    <p>
+    <p align="left">
         <b>商品詳細：{{ $santyoku->description }}</b>
     </p>
-    <p>
+    <h3 style="color: #008000;"><hr>
         <b>価格：¥{{ $santyoku->price }}</b>
-    </p>
+    </h3>
             <h1>購入完了</h1>
             <p>
                 ありがとうございます。<br>
