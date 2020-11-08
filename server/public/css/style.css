@@ -1,3 +1,12 @@
+.i {
+    padding: 30px;
+    color: #008000;
+}
+
+h1 {
+        font-weight: bold;
+}
+
 .square-img{
     height: 242px;
     width: 200px;

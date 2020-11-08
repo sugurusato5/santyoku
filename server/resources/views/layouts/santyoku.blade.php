@@ -6,10 +6,11 @@
           <div class="card-body">
             <h3 class="card-text">{{ $santyoku->title}}</h3>
           <div class="grad-wrap">
-              <input id="trigger1" class="grad-trigger" type="checkbox">
+              <input id="{{ $santyoku->id }}" class="grad-trigger" type="checkbox">
             <div class="grad-item">{{ $santyoku->description}}</div>
-    <label class="grad-btn" for="trigger1"></label>
+    <label class="grad-btn" for="{{ $santyoku->id }}"></label>
 </div>
+
             <p class="card-text">¥{{ $santyoku->price}}</p>
               <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">

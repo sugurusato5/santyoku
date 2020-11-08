@@ -6,7 +6,7 @@
 
 <div class="container">
 
-    <div><h1>Company Name</h1></div>
+    <div><h1>Thank you for your order</h1></div>
     <div><h2></h2> </div>
     <div>
         <div>

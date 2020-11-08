@@ -14,7 +14,7 @@
 <div><img src="storage/santyoku_image/3.jpg" alt="アイキャッチ画像03"></div>
 <div><img src="storage/santyoku_image/4.jpg" alt="アイキャッチ画像04"></div>
 </div> --}}
-
+<div class="i"><h1 align="center" >OnlineGreenGrocer</h1></div>
 <ul class="slides">
 	<li class=""><img class="" src="storage/santyoku_image/1.jpg" /></li>
 	<li class=""><img class="" src="storage/santyoku_image/2.jpg" /></li>
