@@ -18,17 +18,21 @@
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0" method="GET" action="{{ route('santyokus.index') }}">
-      <input class="form-control mr-sm-2" type="search" name="title" placeholder="商品名">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <div style="padding-right: 30px">
+        <input class="form-control mr-sm-2" type="search" name="title" placeholder="商品名">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </div>
       {{-- <input class="form-control mr-sm-2" type="search" name="category" placeholder="カテゴリー"> --}}
-      <select name="category" class="form-control mr-sm-2" type="search" name="category">
-        <option value="果物">果物</option>
-        <option value="野菜">野菜</option>
-        <option value="米・穀物">米・穀物</option>
-        <option value="魚介類">魚介類</option>
-        <option value="肉">肉</option>
-      </select>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <div>
+        <select name="category" class="form-control mr-sm-2" type="search" name="category">
+          <option value="果物">果物</option>
+          <option value="野菜">野菜</option>
+          <option value="米・穀物">米・穀物</option>
+          <option value="魚介類">魚介類</option>
+          <option value="肉">肉</option>
+        </select>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </div>
     </form>
     <ul class="navbar-nav ml-auto">
       @guest

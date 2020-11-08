@@ -4,7 +4,7 @@
       {{-- {{asset('storage/santyoku_image/'.$santyoku->image_url)}} --}}
             <img src="{{ url($santyoku->image_url) }}" alt="..." class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
           <div class="card-body">
-            <h3 class="card-text">{{ $santyoku->title}}</h3>
+            <h3 class="card-text" align="center">{{ $santyoku->title}}</h3>
           <div class="grad-wrap">
               <input id="{{ $santyoku->id }}" class="grad-trigger" type="checkbox">
             <div class="grad-item">{{ $santyoku->description}}</div>

@@ -11,9 +11,9 @@
     <div>
         <div>
             <img src="{{ url($santyoku->image_url) }}" alt="">
-    <p>
+    <h2>
         <b>商品名：{{ $santyoku->title }}</b>
-    </p>
+    </h2>
     <p align="left">
         <b>商品詳細：{{ $santyoku->description }}</b>
     </p>

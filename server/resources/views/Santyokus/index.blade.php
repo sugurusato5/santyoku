@@ -14,7 +14,7 @@
 <div><img src="storage/santyoku_image/3.jpg" alt="アイキャッチ画像03"></div>
 <div><img src="storage/santyoku_image/4.jpg" alt="アイキャッチ画像04"></div>
 </div> --}}
-<div class="i"><h1 align="center" >OnlineGreenGrocer</h1></div>
+<div class="i"><h1 align="center" >~ Online Green Grocer ~</h1></div>
 <ul class="slides">
 	<li class=""><img class="" src="storage/santyoku_image/1.jpg" /></li>
 	<li class=""><img class="" src="storage/santyoku_image/2.jpg" /></li>
@@ -28,6 +28,7 @@
         <a href="#" class="btn btn-secondary my-2">Secondary action</a>
       </p> --}}
     </div>
+    <div class="c"><h2 align="center" >~ 商品一覧 ~</h2></div>
   </section>
             <div class="album py-5 bg-light">
                 <div class="container">
@@ -36,7 +37,7 @@
                     @include('layouts.santyoku', compact('santyoku'))
                     @endforeach
                   </div>
-                  {{ $santyokus->links() }}
+                  <div class="d-flex justify-content-center">{{ $santyokus->links() }}</div>
                 </div>
             </div>
 @endsection

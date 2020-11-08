@@ -2,7 +2,10 @@
     padding: 30px;
     color: #008000;
 }
-
+.c {
+        padding-top: 20px;
+    color: #008000;
+}
 h1 {
         font-weight: bold;
 }
@@ -75,4 +78,8 @@ ul.slides li p {
 
 .grad-wrap{
     color: #030303;
+}
+
+select .form-control {
+    margin-right: 0px;
 }

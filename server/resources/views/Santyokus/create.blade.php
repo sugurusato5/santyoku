@@ -45,12 +45,30 @@
             </p>
             <p>
                 商品画像：<br>
-                <input type="file" name="image_url" value="{{ old('image_url') }}">
+                {{-- <input type="file" name="image_url" value="{{ old('image_url') }}"> --}}
+            {{-- </form> --}}
+
+
+<input type="file" accept='image/*' onchange="previewImage(this);" name="image_url" value="{{ old('image_url') }}">
+<p>
+Preview:<br>
+<img id="preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" style="max-width:200px;">
+</p>
+<script>
+function previewImage(obj)
+{
+	var fileReader = new FileReader();
+	fileReader.onload = (function() {
+		document.getElementById('preview').src = fileReader.result;
+	});
+	fileReader.readAsDataURL(obj.files[0]);
+}
+</script>
+
             </p>
             <p>
                 <button type="submit" class="btn btn-secondary my-2">出品</button>
                 <button type="button" class="btn btn-secondary my-2" onclick="location.href='/santyokus'">一覧に戻る</button>
-                <a href="/santyokus">一覧に戻る</a>
             </p>
         </form>
 

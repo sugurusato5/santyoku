@@ -18,15 +18,15 @@ class SantyokuController extends Controller
         $query = Santyoku::query();
         if($title) {
             $query->where('title', 'like', '%' . $title . '%');
-            $santyokus = $query->simplepaginate(3);
+            $santyokus = $query->simplepaginate(6);
         } 
         if($category) {
             $query->where('category', 'like', '%' . $category . '%');
-            $santyokus = $query->simplepaginate(3);
+            $santyokus = $query->simplepaginate(6);
         } 
         if($title || $category !== false) {
             $query->orderByRaw('created_at desc')->get();
-            $santyokus = $query->simplepaginate(3);
+            $santyokus = $query->simplepaginate(6);
         }
 
         
