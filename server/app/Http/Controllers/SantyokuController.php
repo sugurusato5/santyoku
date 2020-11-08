@@ -13,7 +13,7 @@ class SantyokuController extends Controller
     {
         $title = $request->title;
         $category = $request->category;
-        $santyokus_all= Santyoku::orderBy('created_at','desc')->get();
+        
 
         $query = Santyoku::query();
         if($title) {
