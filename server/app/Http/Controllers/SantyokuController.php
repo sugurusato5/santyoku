@@ -33,6 +33,7 @@ class SantyokuController extends Controller
         return view('santyokus.index', ['santyokus' => $santyokus]);
     }
 
+    
     public function show($id)
     {
         $santyoku = Santyoku::find($id);
